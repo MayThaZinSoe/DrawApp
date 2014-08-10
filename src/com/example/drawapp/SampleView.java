@@ -4,7 +4,9 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 public class SampleView extends View {
 
@@ -27,12 +29,24 @@ public class SampleView extends View {
 	private Paint paint = new Paint();
 	
 	
+	@Override
+	public boolean onTouchEvent(MotionEvent event){
+		Toast.makeText(getContext(),"Change Touch",Toast.LENGTH_SHORT).show();
+		
+		
+		return true;
+	}
+
+	
+		
+	
+	
+	
 	
 	
 	
 	
 }
-	
 	
 	
 	
