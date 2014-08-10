@@ -1,6 +1,9 @@
 package com.example.drawapp;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -14,21 +17,44 @@ public class SampleView extends View {
 	private int color= Color.RED ;
 	private int bx = 100;
 	private int by = 100;
+	private int dx = 2;
+	private int dy = 2;
+	private static int margin = 20;
+	private Bitmap item;
 	
-	/**
-	 * @param args
-	 */
 	
 	
 	public SampleView(Context context){
 	super(context);
 	setBackgroundColor(Color.TRANSPARENT);
+	Resources res = context.getResources();
+			item = BitmapFactory.decodeResource(res, R.drawable.ic_launcher);
 	
 	}
 	@Override
 	public void onDraw(Canvas canvas){
 		paint.setColor(color);
-		canvas.drawCircle( 100, 100,20,paint);
+		canvas.drawCircle( bx, by,20,paint);
+		
+		//Reversal When you come to the far left
+		if(bx < 0 + margin){
+			dx = 2;
+		}
+		//Reversal When you come to the far right
+		if(bx > getWidth() - margin){
+			dx = -2;
+		}
+		//Reversal When you come to the far upper
+		if (by < 0 + margin) {
+            dy = 2;
+        }	
+		//Reversal When you come to the far down
+		if(by > getHeight() - margin){
+			dy = -2;
+		}
+		
+		bx = bx + dx;
+		by = by + dy;
 	
 	}
 	
