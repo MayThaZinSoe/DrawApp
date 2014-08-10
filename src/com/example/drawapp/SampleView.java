@@ -25,6 +25,7 @@ public class SampleView extends View {
 	
 	
 	public SampleView(Context context){
+		//oya class go call tar
 	super(context);
 	setBackgroundColor(Color.TRANSPARENT);
 	Resources res = context.getResources();
@@ -35,6 +36,7 @@ public class SampleView extends View {
 	public void onDraw(Canvas canvas){
 		paint.setColor(color);
 		canvas.drawCircle( bx, by,20,paint);
+		canvas.drawBitmap(item, 200, 200,null);
 		
 		//Reversal When you come to the far left
 		if(bx < 0 + margin){
